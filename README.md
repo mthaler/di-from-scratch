@@ -9,4 +9,14 @@ Dependency Injection (DI) is a design pattern that implements the Inversion of C
 - Reduction of boilderplate
 - can be used to externalize system's configuration
 
-Dependency Injection is a core feature of the Spring framework.
+DI is a core feature of the Spring framework.
+
+## Disadvantages of dependency injection
+
+Some of the disadvantages of DI are listed [here](https://en.wikipedia.org/wiki/Dependency_injection#Disadvantages). Another disadvantage of DI is that it feels like magic when e.g. learning the Spring framework because it is not really clear what's going on under the hood.
+
+## Understanding dependency injection
+
+[This article](https://dev.to/martinhaeusler/understanding-dependency-injection-by-writing-a-di-container-from-scratch-part-1-1hdf) provides an easy to understand introduction to DI by implementing dependency injection from scratch.
+
+The code in this repository is a Kotlin port of the code from the article.
