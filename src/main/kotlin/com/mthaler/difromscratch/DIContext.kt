@@ -18,6 +18,10 @@ class DIContext(serviceClasses: Collection<Class<*>>) {
         // wire them together
         for (serviceInstance in serviceInstances) {
             for (field in serviceInstance.javaClass.declaredFields) {
+                if (!field.isAnnotationPresent(Inject::class.java)) {
+                    // this field is none of our business
+                    continue
+                }
                 val fieldType = field.type
                 field.isAccessible = true
                 // find a suitable matching service instance
