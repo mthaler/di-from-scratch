@@ -42,4 +42,19 @@ class DIContext(serviceClasses: Collection<Class<*>>) {
         }
         return null
     }
+
+    companion object {
+
+        fun createContextForPackage(rootPackageName: String): DIContext {
+            val allClassesInPackage: Set<Class<*>> = getAllClassesInPackage(rootPackageName)
+            val serviceClasses: MutableSet<Class<*>> = HashSet()
+            for (aClass in allClassesInPackage) {
+                if (aClass.isAnnotationPresent(Service::class.java)) {
+                    serviceClasses.add(aClass)
+                }
+            }
+            return DIContext(serviceClasses)
+        }
+
+    }
 }

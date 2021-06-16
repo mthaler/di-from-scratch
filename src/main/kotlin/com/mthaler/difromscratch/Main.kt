@@ -1,16 +1,16 @@
 package com.mthaler.difromscratch
 
+class Main
 
 fun main(args: Array<String>) {
     val context = createContext()
     context?.let { doBusinessLogic(it) }
 }
 
+@Throws(Exception::class)
 private fun createContext(): DIContext? {
-    val serviceClasses: MutableSet<Class<*>> = HashSet()
-    serviceClasses.add(ServiceAImpl::class.java)
-    serviceClasses.add(ServiceBImpl::class.java)
-    return DIContext(serviceClasses)
+    val rootPackageName: String = Main::class.java.getPackage().getName()
+    return DIContext.createContextForPackage(rootPackageName)
 }
 
 private fun doBusinessLogic(context: DIContext) {

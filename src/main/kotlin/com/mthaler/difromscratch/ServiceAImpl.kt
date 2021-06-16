@@ -1,5 +1,6 @@
 package com.mthaler.difromscratch
 
+@Service
 class ServiceAImpl: ServiceA {
 
     @Inject
