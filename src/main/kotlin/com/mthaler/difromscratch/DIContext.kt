@@ -2,6 +2,7 @@ package com.mthaler.difromscratch
 
 import java.lang.reflect.Constructor
 
+// Basically the Spring ApplicationContext
 class DIContext(serviceClasses: Collection<Class<*>>) {
 
     private val serviceInstances: MutableSet<Any> = HashSet()

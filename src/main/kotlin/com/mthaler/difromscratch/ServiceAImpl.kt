@@ -2,6 +2,7 @@ package com.mthaler.difromscratch
 
 class ServiceAImpl: ServiceA {
 
+    @Inject
     private lateinit var serviceB: ServiceB
 
     override fun getServiceB(): ServiceB = serviceB
