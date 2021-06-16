@@ -1,3 +1,3 @@
 
-rootProject.name = "di"
+rootProject.name = "di-from-scratch"
 
