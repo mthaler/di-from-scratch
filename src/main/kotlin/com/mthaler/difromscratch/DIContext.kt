@@ -2,7 +2,11 @@ package com.mthaler.difromscratch
 
 import java.lang.reflect.Constructor
 
-// Basically the Spring ApplicationContext
+/**
+ * The dependency injection container, or in Spring terms the ApplicationContext.
+ *
+ * @param serviceClasses service classes
+ */
 class DIContext(serviceClasses: Collection<Class<*>>) {
 
     private val serviceInstances: MutableSet<Any> = HashSet()
@@ -34,6 +38,11 @@ class DIContext(serviceClasses: Collection<Class<*>>) {
         }
     }
 
+    /**
+     * Returns the service instance for the given service class or null if there is no service instance
+     *
+     * @param serviceClass service class
+     */
     fun <T> getServiceInstance(serviceClass: Class<T>): T? {
         for (serviceInstance in serviceInstances) {
             if (serviceClass.isInstance(serviceInstance)) {
@@ -45,6 +54,13 @@ class DIContext(serviceClasses: Collection<Class<*>>) {
 
     companion object {
 
+        /**
+         * Creates an application context for the given package name.
+         * It iterates over all classes in the given package and checks if there are any service classes annotated with
+         * the Service annotation.
+         *
+         * @param rootPackageName root package name
+         */
         fun createContextForPackage(rootPackageName: String): DIContext {
             val allClassesInPackage: Set<Class<*>> = getAllClassesInPackage(rootPackageName)
             val serviceClasses: MutableSet<Class<*>> = HashSet()
