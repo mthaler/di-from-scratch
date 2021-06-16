@@ -1,6 +1,6 @@
 package com.mthaler.difromscratch
 
-object ServiceB {
+class ServiceB {
 
     fun jobB(): String {
         return "jobB()"

@@ -1,5 +1,7 @@
 package com.mthaler.difromscratch
 
 fun main(args: Array<String>) {
-    println(ServiceA.jobA())
+    val serviceB = ServiceB()
+    val serviceA = ServiceA(serviceB)
+    println(serviceA.jobA())
 }

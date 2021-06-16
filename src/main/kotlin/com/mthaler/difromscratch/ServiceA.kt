@@ -1,8 +1,8 @@
 package com.mthaler.difromscratch
 
-object ServiceA {
+class ServiceA(private val serviceB: ServiceB) {
 
     fun jobA(): String {
-        return "jobA(${ServiceB.jobB()})"
+        return "jobA(${serviceB.jobB()})"
     }
 }
