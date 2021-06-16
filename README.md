@@ -17,6 +17,6 @@ Some of the disadvantages of DI are listed [here](https://en.wikipedia.org/wiki/
 
 ## Understanding dependency injection
 
-[This article](https://dev.to/martinhaeusler/understanding-dependency-injection-by-writing-a-di-container-from-scratch-part-1-1hdf) provides an easy to understand introduction to DI by implementing dependency injection from scratch.
+[This](https://dev.to/martinhaeusler/understanding-dependency-injection-by-writing-a-di-container-from-scratch-part-1-1hdf) article provides an easy to understand introduction to DI by implementing dependency injection from scratch.
 
 The code in this repository is a Kotlin port of the code from the article.
