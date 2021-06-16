@@ -2,48 +2,20 @@ package com.mthaler.difromscratch
 
 
 fun main(args: Array<String>) {
+    val context = createContext()
+    context?.let { doBusinessLogic(it) }
+}
+
+private fun createContext(): DIContext? {
     val serviceClasses: MutableSet<Class<*>> = HashSet()
     serviceClasses.add(ServiceAImpl::class.java)
     serviceClasses.add(ServiceBImpl::class.java)
-
-    val serviceA = createServiceA(serviceClasses)
-
-    // call business logic
-
-    // call business logic
-    println(serviceA?.jobA())
+    return DIContext(serviceClasses)
 }
 
-@Throws(Exception::class)
-private fun createServiceA(serviceClasses: Set<Class<*>>): ServiceA? {
-
-    // create an instance of each service class
-    val serviceInstances: MutableSet<Any> = HashSet()
-    for (serviceClass in serviceClasses) {
-        val constructor = serviceClass.getConstructor()
-        constructor.setAccessible(true)
-        serviceInstances.add(constructor.newInstance())
-    }
-
-    // wire them together
-    for (serviceInstance in serviceInstances) {
-        for (field in serviceInstance.javaClass.declaredFields) {
-            val fieldType = field.type
-            field.isAccessible = true
-            // find a suitable matching service instance
-            for (matchPartner in serviceInstances) {
-                if (fieldType.isInstance(matchPartner)) {
-                    field[serviceInstance] = matchPartner
-                }
-            }
-        }
-    }
-    // from all our service instances, find ServiceA
-    for (serviceInstance in serviceInstances) {
-        if (serviceInstance is ServiceA) {
-            return serviceInstance
-        }
-    }
-    // we didn't find the requested service instance
-    return null
+private fun doBusinessLogic(context: DIContext) {
+    val serviceA = context.getServiceInstance(ServiceA::class.java)
+    val serviceB = context.getServiceInstance(ServiceB::class.java)
+    println(serviceA?.jobA())
+    println(serviceB?.jobB())
 }
