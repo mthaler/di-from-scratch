@@ -1,8 +1,6 @@
 package com.mthaler.difromscratch
 
-class ServiceB {
+interface ServiceB {
 
-    fun jobB(): String {
-        return "jobB()"
-    }
+    fun jobB(): String
 }
